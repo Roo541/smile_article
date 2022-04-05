@@ -2,16 +2,37 @@ import pandas as pd
 import numpy as np 
 import math 
 
-def call(s, k, r, t, vol):
-    call_price = s*(N())
+def MyDist(d):
+    dx = 0.01
+    x = np.arange(-1, d, dx)
+    y = []
+    sigma = 1.0
+    summation = 0.158
+    for i in x:
+        value = (1/(sigma*np.sqrt(2*np.pi)))*(np.exp((-0.5)*(i/sigma)**2))
+        summation += value*dx
+        y.append(summation)
+    
+    N = y[-1:]
+    return N[0]
 
-    call_price = 0.0
+def call(s, k, r, t, vol):
+    d1 = (np.log(s/k) + ((r + (vol**2)/2))*t)/(vol*np.sqrt(t))
+    N_1 = MyDist(d1)
+    d2 = d1 - vol*np.sqrt(t)
+    N_2 = MyDist(d2)
+
+    call_price = s*N_1 - k*(np.exp(-r*t))*N_2
+
+
     return call_price
 
-
-
-s = 10.0
-k = 12.0
+s = 48.67
+k = 50.0
 r = 0.01
-t = 30/365.0
-vol = .25
+t = 9/365.0
+vol = 0.2471
+
+
+hello = call(s,k,r,t,vol)
+print('call price', hello)

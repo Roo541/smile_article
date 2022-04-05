@@ -16,7 +16,7 @@ def MyDist(d):
     N = y[-1:]
     return N[0]
 
-def call(s, k, r, t, vol):
+def call(s, k, r, t, C):
     d1 = (np.log(s/k) + ((r + (vol**2)/2))*t)/(vol*np.sqrt(t))
     N_1 = MyDist(d1)
     d2 = d1 - vol*np.sqrt(t)
@@ -32,7 +32,7 @@ k = 50.0
 r = 0.01
 t = 9/365.0
 vol = 0.2471
+C = 0.29
 
-
-hello = call(s,k,r,t,vol)
+hello = call(s,k,r,t,C)
 print('call price', hello)

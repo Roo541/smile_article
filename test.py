@@ -26,13 +26,3 @@ def call(s, k, r, t, C):
 
 
     return call_price
-
-s = 48.67
-k = 50.0
-r = 0.01
-t = 9/365.0
-vol = 0.2471
-C = 0.29
-
-hello = call(s,k,r,t,C)
-print('call price', hello)

@@ -54,3 +54,4 @@ wk_2_dates = wk_2_dates.drop_duplicates()
 animation = FuncAnimation(fig, func=animation_frame, frames = dates, interval=1)
 animation_2 = FuncAnimation(fig_2, func=animation_frame_2, frames = wk_2_dates, interval=1)
 plt.show()
+

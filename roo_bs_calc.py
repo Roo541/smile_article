@@ -2,7 +2,8 @@ import numpy as np
 from statistics import NormalDist
 
 def iv_calc(s,k,t,r,C):
-    vol = np.arange(0,1,0.001)
+    vol = np.arange(0,1,0.0001)
+    iv = None
     tolerance = 0.001
     for i in vol:
         d1 = (np.log(s/k) + ((r + (i**2)/2))*t)/(i*np.sqrt(t))
@@ -13,11 +14,11 @@ def iv_calc(s,k,t,r,C):
 
         if (C - C*tolerance) <= call_price and (C + C*tolerance) >= call_price:
             iv = i
-            break
+            return iv
         else:
             pass
 
-    return iv
+    return
 
 
 
